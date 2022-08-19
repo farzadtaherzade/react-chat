@@ -22,13 +22,16 @@ function Chat() {
         );
       });
   }, []);
+  useEffect(() => {
+    dummy.current.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
   return (
     <div className="msgs">
       <SignOut />
       <div className="all">
         {messages.map(({ id, text, photoURL, uid }) => (
           <ListItem
-            className={`msgs ${uid === auth.currentUser.id ? "sent" : ""}`}
+            className={`msgs ${uid === auth.currentUser.uid ? "sent" : ""}`}
             key={id}
           >
             <Avatar src={photoURL} sx={{ width: 37, height: 37 }} />

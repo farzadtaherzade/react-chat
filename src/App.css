@@ -76,6 +76,7 @@ body {
     margin: 10px 0 70px 0;
 }
 
+.msgs {}
 
 .msgs.sent .msg {
     margin-right: 30px;
