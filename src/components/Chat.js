@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { auth, db } from "../firebase";
 import SignOut from "./SignOut";
 import SendMessage from "./SendMessage";
@@ -6,6 +6,8 @@ import { Avatar, ListItem } from "@mui/material";
 
 function Chat() {
   const [messages, setMessages] = useState([]);
+  const dummy = useRef();
+
   useEffect(() => {
     db.collection("messages")
       .orderBy("createdAt")
@@ -36,7 +38,8 @@ function Chat() {
           </ListItem>
         ))}
       </div>
-      <SendMessage />
+      <SendMessage dummy={dummy} />
+      <div ref={dummy} className="dummy"></div>
     </div>
   );
 }

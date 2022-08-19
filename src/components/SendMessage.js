@@ -3,7 +3,7 @@ import { Input, TextField } from "@mui/material";
 import { auth, db } from "../firebase";
 import firebase from "firebase/compat/app";
 
-function SendMessage() {
+function SendMessage({ dummy }) {
   const [msg, setMsg] = useState("");
   const sendMessageHandler = async (e) => {
     e.preventDefault();
@@ -16,6 +16,7 @@ function SendMessage() {
         createdAt: firebase.firestore.FieldValue.serverTimestamp(),
       });
       setMsg("");
+      dummy.current.scrollIntoView({ behavior: "smooth" });
     }
   };
   return (
