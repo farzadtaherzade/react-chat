@@ -11,7 +11,6 @@ function Chat() {
   useEffect(() => {
     db.collection("messages")
       .orderBy("createdAt")
-      .limit(50)
       .onSnapshot((snapshot) => {
         setMessages(
           ...messages,
